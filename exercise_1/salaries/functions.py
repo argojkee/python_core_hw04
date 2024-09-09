@@ -1,5 +1,6 @@
 from .data import parse_file
 
+
 def make_workers_dict(workers:list) -> list[dict]:
     if not workers:
         return
@@ -12,10 +13,13 @@ def make_workers_dict(workers:list) -> list[dict]:
     return dict_workers
 
 def total_salary(path: str) -> tuple:
-    workers = parse_file(path)
-    dict_workers = make_workers_dict(workers)
-    sum = 0
-    for worker in dict_workers:
-        sum += worker['salary']
-    average_salary = sum / len(dict_workers)
-    return (sum, average_salary)
+    try:    
+        workers = parse_file(path)
+        dict_workers = make_workers_dict(workers)
+        sum = 0
+        for worker in dict_workers:
+            sum += worker['salary']
+        average_salary = round(sum / len(dict_workers), 1)
+        return (sum, average_salary)
+    except TypeError:
+        print('Bad data!')

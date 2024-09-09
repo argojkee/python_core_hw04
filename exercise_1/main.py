@@ -1,6 +1,9 @@
 from salaries.functions import total_salary
 from pathlib import Path
 
+
+
+
 path = Path('salaries/salaries.txt')
 
 
